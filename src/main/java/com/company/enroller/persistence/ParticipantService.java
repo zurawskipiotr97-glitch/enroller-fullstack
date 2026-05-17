@@ -10,48 +10,58 @@ import java.util.Collection;
 @Component("participantService")
 public class ParticipantService {
 
-    DatabaseConnector connector;
+	DatabaseConnector connector;
 
-    public ParticipantService() {
-        connector = DatabaseConnector.getInstance();
-    }
+	public ParticipantService() {
+		connector = DatabaseConnector.getInstance();
+	}
 
-    public Collection<Participant> getAll(String login, String sortMode, String sortOrder) {
-        String hql = "FROM Participant WHERE login LIKE :login";
 
-        if (sortMode.equals("login")) {
-            hql += " ORDER BY login";
-            if (sortOrder.equals("ASC") || sortOrder.equals("DESC")) {
-                hql += " " + sortOrder;
-            }
-        }
-
+    public Collection<Participant> getAll() {
+        String hql = "FROM Participant";
         Query query = connector.getSession().createQuery(hql);
-        query.setParameter("login", "%" + login + "%");
         return query.list();
     }
+	public Collection<Participant> getAll(String sortBy, String sortOrder, String key) {
+        String finalKey = (key == null || key.isEmpty()) ? "%" : "%" + key + "%";
+
+        String hql = "FROM Participant WHERE lower(login) LIKE lower(:flogin) " +
+                "ORDER BY " + sortBy + " " + sortOrder;
+
+        Query query = connector.getSession().createQuery(hql);
+        query.setParameter("flogin", finalKey);
+        return query.list();
+	}
 
     public Participant findByLogin(String login) {
-        return connector.getSession().get(Participant.class, login);
+        return (Participant) connector.getSession().get(Participant.class, login);
     }
 
-    public Participant add(Participant participant) {
+    public void addParticipant(Participant participant) {
         Transaction transaction = connector.getSession().beginTransaction();
         connector.getSession().save(participant);
         transaction.commit();
-        return participant;
     }
 
-    public void update(Participant participant) {
+    public void updateParticipant(Participant participant) {
         Transaction transaction = connector.getSession().beginTransaction();
         connector.getSession().merge(participant);
         transaction.commit();
     }
 
-    public void delete(Participant participant) {
+    public void deleteParticipant(Participant participant) {
         Transaction transaction = connector.getSession().beginTransaction();
         connector.getSession().delete(participant);
         transaction.commit();
+    }
+
+    public boolean isFieldValid(String fieldName) {
+        try {
+            connector.getSession().getMetamodel().entity(Participant.class).getAttribute(fieldName);
+            return true;
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
     }
 
 }

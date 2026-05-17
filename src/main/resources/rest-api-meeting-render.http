@@ -1,0 +1,104 @@
+GET https://agh-mwo-enroller-gvyv.onrender.com/meetings/
+Accept: application/json
+
+###
+GET https://agh-mwo-enroller-gvyv.onrender.com/meetings/2
+Accept: application/json
+
+###
+GET https://agh-mwo-enroller-gvyv.onrender.com/meetings/user1231
+Accept: application/json
+
+###
+POST https://agh-mwo-enroller-gvyv.onrender.com/meetings/
+Content-Type: application/json
+
+{
+  "id": 0,
+  "title":"some title2",
+  "description":"some description2",
+  "date":"some date2"
+}
+
+###
+DELETE https://agh-mwo-enroller-gvyv.onrender.com/meetings/
+Content-Type: application/json
+
+{
+  "id": 3,
+  "title":"some title2",
+  "description":"some description2",
+  "date":"some date2"
+}
+
+###
+PUT https://agh-mwo-enroller-gvyv.onrender.com/meetings/
+Content-Type: application/json
+
+{
+  "id":6,
+  "title":"some title2",
+  "description":"trololololololo",
+  "date":"some date2"
+}
+
+###
+GET https://agh-mwo-enroller-gvyv.onrender.com/meetings/
+Accept: application/json
+
+###
+GET https://agh-mwo-enroller-gvyv.onrender.com/meetings?sortBy=title&sortOrder=DESC
+Accept: application/json
+
+###
+GET https://agh-mwo-enroller-gvyv.onrender.com/meetings?sortBy=title&sortOrder=ASC
+Accept: application/json
+
+###
+GET https://agh-mwo-enroller-gvyv.onrender.com/meetings?sortBy=title
+Accept: application/json
+
+###
+GET https://agh-mwo-enroller-gvyv.onrender.com/meetings?sortBy=logwn
+Accept: application/json
+
+###
+GET https://agh-mwo-enroller-gvyv.onrender.com/meetings?sortBy=title&sortOrder=ASCawd
+Accept: application/json
+
+###
+GET https://agh-mwo-enroller-gvyv.onrender.com/meetings?key=some
+Accept: application/json
+
+###
+GET https://agh-mwo-enroller-gvyv.onrender.com/meetings?key=tit
+Accept: application/json
+
+###
+GET https://agh-mwo-enroller-gvyv.onrender.com/meetings?key=some123123
+Accept: application/json
+
+###
+GET https://agh-mwo-enroller-gvyv.onrender.com/meetings/2/participants
+Accept: application/json
+
+###
+POST https://agh-mwo-enroller-gvyv.onrender.com/meetings/2/participants
+Content-Type: application/json
+
+{
+    "login": "user3"
+}
+
+###
+POST https://agh-mwo-enroller-gvyv.onrender.com/meetings/2/participants
+Content-Type: application/json
+
+{
+"login": "user5"
+}
+
+
+###
+DELETE https://agh-mwo-enroller-gvyv.onrender.com/meetings/2/participants/user3
+Content-Type: application/json
