@@ -5,6 +5,7 @@ import LoginForm from "./LoginForm";
 import UserPanel from "./UserPanel";
 
 function App() {
+
     const [loggedIn, setLoggedIn] = useState('');
 
     function login(email) {
@@ -20,7 +21,17 @@ function App() {
     return (
         <div>
             <h1>System do zapisów na zajęcia</h1>
-            {loggedIn ? <UserPanel username={loggedIn} onLogout={logout}/> : <LoginForm onLogin={login}/>}
+
+            {
+                loggedIn
+                    ? <UserPanel
+                        username={loggedIn}
+                        onLogout={logout}
+                    />
+                    : <LoginForm
+                        onLogin={login}
+                    />
+            }
         </div>
     );
 }
