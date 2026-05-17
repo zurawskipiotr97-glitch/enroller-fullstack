@@ -1,6 +1,6 @@
 import {useState} from "react";
 
-export default function MeetingsList({meetings, onDelete}) {
+export default function MeetingsList({meetings, username, onDelete}) {
     const [contestants, setContestants] = useState([])
     // const [contestantName, setContestantNmae]
 
@@ -14,7 +14,9 @@ export default function MeetingsList({meetings, onDelete}) {
     }
 
     function handleDeleteMeeting(meeting){
-        onDelete(meeting)
+        if (contestants.length === 0) {
+            onDelete(meeting)
+        }
     }
 
     return (

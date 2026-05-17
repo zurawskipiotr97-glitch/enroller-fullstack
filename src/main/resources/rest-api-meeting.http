@@ -1,0 +1,109 @@
+GET http://localhost:8080/meetings/
+Accept: application/json
+
+###
+GET http://localhost:8080/meetings/2
+Accept: application/json
+
+###
+GET http://localhost:8080/meetings/user1231
+Accept: application/json
+
+###
+POST http://localhost:8080/meetings/
+Content-Type: application/json
+
+{
+  "id": 0,
+  "title":"some title2",
+  "description":"some description2",
+  "date":"some date2"
+}
+
+<> 2026-04-25T110338-2.409.txt
+<> 2026-04-25T110335-2.409.txt
+<> 2026-04-25T105720-2.409.txt
+
+###
+DELETE http://localhost:8080/meetings/
+Content-Type: application/json
+
+{
+  "id": 3,
+  "title":"some title2",
+  "description":"some description2",
+  "date":"some date2"
+}
+
+<> 2026-04-25T110338.405.json
+<> 2026-04-25T110335.405.json
+<> 2026-04-25T105720.405.json
+
+###
+PUT http://localhost:8080/meetings/
+Content-Type: application/json
+
+{
+  "id":6,
+  "title":"some title2",
+  "description":"trololololololo",
+  "date":"some date2"
+}
+
+###
+GET http://localhost:8080/meetings/
+Accept: application/json
+
+<> 2026-04-25T110338-1.200.json
+<> 2026-04-25T110335-2.200.json
+<> 2026-04-25T105720-2.200.json
+
+###
+GET http://localhost:8080/meetings?sortBy=title&sortOrder=DESC
+Accept: application/json
+
+###
+GET http://localhost:8080/meetings?sortBy=title&sortOrder=ASC
+Accept: application/json
+
+###
+GET http://localhost:8080/meetings?sortBy=title
+Accept: application/json
+
+###
+GET http://localhost:8080/meetings?sortBy=logwn
+Accept: application/json
+
+###
+GET http://localhost:8080/meetings?sortBy=title&sortOrder=ASCawd
+Accept: application/json
+
+###
+GET http://localhost:8080/meetings?key=some
+Accept: application/json
+
+###
+GET http://localhost:8080/meetings?key=tit
+Accept: application/json
+
+###
+GET http://localhost:8080/meetings?key=some123123
+Accept: application/json
+
+###
+GET https://localhost:8080/meetings/2/participants
+Accept: application/json
+
+
+###
+POST https://localhost:8080/meetings/2/participants
+Content-Type: application/json
+
+{
+  "login": "user5"
+}
+
+
+###
+DELETE https://localhost:8080//meetings/2/participants/user3
+Accept: application/json

@@ -1,0 +1,90 @@
+GET https://agh-mwo-enroller-gvyv.onrender.com/participants/
+Accept: application/json
+###
+GET https://agh-mwo-enroller-gvyv.onrender.com/participants/user2
+Accept: application/json
+
+###
+GET https://agh-mwo-enroller-gvyv.onrender.com/participants/user1231
+Accept: application/json
+
+###
+POST https://agh-mwo-enroller-gvyv.onrender.com/participants
+Content-Type: application/json
+
+{
+  "login": "somelogin",
+  "password": "some password"
+}
+
+###
+POST https://agh-mwo-enroller-gvyv.onrender.com/participants
+Content-Type: application/json
+
+{
+  "login": "somelogin",
+  "password": "some password"
+}
+
+###
+POST https://agh-mwo-enroller-gvyv.onrender.com/participants
+Content-Type: application/json
+
+{
+  "login": "somelogin2",
+  "password": "some password"
+}
+
+###
+DELETE https://agh-mwo-enroller-gvyv.onrender.com/participants
+Content-Type: application/json
+
+{
+  "login": "somelogin2",
+  "password": "some password"
+}
+
+###
+PUT https://agh-mwo-enroller-gvyv.onrender.com/participants
+Content-Type: application/json
+
+{
+  "login": "somelogin",
+  "password": "new pswd"
+}
+
+###
+GET https://agh-mwo-enroller-gvyv.onrender.com/participants
+Accept: application/json
+
+###
+GET https://agh-mwo-enroller-gvyv.onrender.com/participants?sortBy=login&sortOrder=DESC
+Accept: application/json
+
+###
+GET https://agh-mwo-enroller-gvyv.onrender.com/participants?sortBy=login&sortOrder=ASC
+Accept: application/json
+
+###
+GET https://agh-mwo-enroller-gvyv.onrender.com/participants?sortBy=login
+Accept: application/json
+
+###
+GET https://agh-mwo-enroller-gvyv.onrender.com/participants?sortBy=logwn
+Accept: application/json
+
+###
+GET https://agh-mwo-enroller-gvyv.onrender.com/participants?sortBy=login&sortOrder=ASCawd
+Accept: application/json
+
+###
+GET https://agh-mwo-enroller-gvyv.onrender.com/participants?key=some
+Accept: application/json
+
+###
+GET https://agh-mwo-enroller-gvyv.onrender.com/participants?key=us
+Accept: application/json
+
+###
+GET https://agh-mwo-enroller-gvyv.onrender.com/participants?key=some123123
+Accept: application/json

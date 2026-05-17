@@ -1,0 +1,21 @@
+###
+POST http://localhost:8080/tokens
+Content-Type: application/json
+
+{
+  "login": "somelogin",
+  "password": "some password"
+}
+
+###
+POST http://localhost:8080/participants
+Content-Type: application/json
+
+{
+  "login": "testuser",
+  "password": "testuser"
+}
+
+### Authorization by token
+GET http://localhost:8080/meetings
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL215ZW5yb2xsZXJkZW1vIiwic3ViIjoic29tZWxvZ2luIiwiaWF0IjoxNzc4NzA2OTkzLCJleHAiOjE3Nzg3MTA1OTMsInJvbGUiOiJwYXJ0aWNpcGFudCJ9.wtc5W8XiogB6u9_zwIjPG-s0e6_8jbWFxZmoPJhD8Ds
