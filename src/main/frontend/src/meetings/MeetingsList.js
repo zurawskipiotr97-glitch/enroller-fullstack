@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 export default function MeetingsList({ meetings, username, onDelete }) {
     const [participantsByMeeting, setParticipantsByMeeting] = useState({});
@@ -39,7 +40,13 @@ export default function MeetingsList({ meetings, username, onDelete }) {
         });
 
         if (response.ok) {
+            toast.success("Zapisano na spotkanie!");
             await fetchParticipants(meeting.id);
+        }else{
+            const message = await response.text();
+
+            toast.error(message);
+
         }
     }
 
@@ -52,7 +59,11 @@ export default function MeetingsList({ meetings, username, onDelete }) {
         );
 
         if (response.ok) {
+            toast.info("Wypisano ze spotkania");
+
             await fetchParticipants(meeting.id);
+        } else {
+            toast.error("Nie udało się wypisać");
         }
     }
 
@@ -60,7 +71,11 @@ export default function MeetingsList({ meetings, username, onDelete }) {
         const participants = participantsByMeeting[meeting.id] || [];
 
         if (participants.length === 0) {
+            toast.warning("Usuwanie spotkania...");
+
             onDelete(meeting);
+        } else {
+            toast.error("Nie można usunąć spotkania z uczestnikami");
         }
     }
 
@@ -70,6 +85,7 @@ export default function MeetingsList({ meetings, username, onDelete }) {
             <tr>
                 <th>Nazwa spotkania</th>
                 <th>Opis</th>
+                <th>Data</th>
                 <th>Uczestnicy</th>
                 <th></th>
             </tr>
@@ -87,6 +103,7 @@ export default function MeetingsList({ meetings, username, onDelete }) {
                     <tr key={meeting.id || index}>
                         <td>{meeting.title}</td>
                         <td>{meeting.description}</td>
+                        <td>{meeting.date}</td>
 
                         <td>
                             {participants.length > 0 ? (

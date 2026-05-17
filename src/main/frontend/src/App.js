@@ -3,6 +3,8 @@ import './App.css';
 import {useState} from "react";
 import LoginForm from "./LoginForm";
 import UserPanel from "./UserPanel";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
 
@@ -20,6 +22,7 @@ function App() {
 
     return (
         <div>
+            <ToastContainer position="top-right" autoClose={3000} />
             <h1>System do zapisów na zajęcia</h1>
 
             {
