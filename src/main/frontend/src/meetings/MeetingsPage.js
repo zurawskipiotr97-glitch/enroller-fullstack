@@ -6,14 +6,16 @@ export default function MeetingsPage({username}) {
     const [meetings, setMeetings] = useState([]);
     const [addingNewMeeting, setAddingNewMeeting] = useState(false);
 
+    const fetchMeetings = async () => {
+        const response = await fetch('/api/meetings');
+
+        if (response.ok) {
+            const meetings = await response.json();
+            setMeetings(meetings);
+        }
+    };
+
     useEffect(() => {
-        const fetchMeetings = async () => {
-            const response = await fetch(`/api/meetings`);
-            if (response.ok) {
-                const meetings = await response.json();
-                setMeetings(meetings);
-            }
-        };
         fetchMeetings();
     }, []);
 
@@ -22,12 +24,12 @@ export default function MeetingsPage({username}) {
             method: 'POST',
             body: JSON.stringify(meeting),
             headers: {
-                // dodaj kiedyś Authorization:
-                'Content-Type': 'application/json' }
+                'Content-Type': 'application/json'
+            }
         });
+
         if (response.ok) {
-            const nextMeetings = [...meetings, meeting];
-            setMeetings(nextMeetings);
+            await fetchMeetings();
             setAddingNewMeeting(false);
         }
     }

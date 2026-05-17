@@ -150,13 +150,13 @@ public class MeetingRestController {
             );
     }
 
-    @RequestMapping(value = "", method = RequestMethod.DELETE)
-    public ResponseEntity<?> deleteMeeting(@RequestBody Meeting meeting) {
-        Meeting existingMeeting = meetingService.findById(meeting.getId());
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<?> deleteMeeting(@PathVariable("id") long id) {
+        Meeting existingMeeting = meetingService.findById(id);
 
         if (existingMeeting != null) {
             meetingService.deleteMeeting(existingMeeting);
-            return new ResponseEntity<>("Spotkanie zostało usunięte", HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
 
         return new ResponseEntity<>("Nie było takiego spotkania", HttpStatus.NOT_FOUND);
