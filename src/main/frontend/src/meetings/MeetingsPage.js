@@ -21,7 +21,9 @@ export default function MeetingsPage({username}) {
         const response = await fetch('/api/meetings', {
             method: 'POST',
             body: JSON.stringify(meeting),
-            headers: { 'Content-Type': 'application/json' }
+            headers: {
+                // dodaj kiedyś Authorization:
+                'Content-Type': 'application/json' }
         });
         if (response.ok) {
             const nextMeetings = [...meetings, meeting];
